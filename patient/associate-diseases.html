@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Customer - Dashboard</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="../admin/assets/img/favicon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+
+    <!-- Feathericon CSS -->
+    <link rel="stylesheet" href="../assets/css/feathericon.min.css">
+
+    <link rel="stylesheet" href="../assets/plugins/morris/morris.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../assets/css/custom.css">
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <style>
+        .header {
+            background: none;
+            border-bottom: none;
+            z-index: 1001;
+            height: 60px;
+            position: static;
+            top: 0;
+            right: 0;
+            /* left: 18%; */
+        }
+
+        .sidebar {
+            background-color: #fff;
+            margin-top: 0;
+            -webkit-transition: all 0.2s ease-in-out 0s;
+            -ms-transition: all 0.2s ease-in-out 0s;
+            transition: all 0.2s ease-in-out 0s;
+            width: 240px;
+            z-index: 1001;
+            position: fixed;
+            top: 0px;
+            bottom: 0;
+            left: 0;
+        }
+
+        .sidebar .sidebar-menu>ul>li>a {
+            color: #000000;
+        }
+
+        .sidebar-menu ul li.active a {
+            background-color: #1c3264;
+            color: #fff;
+        }
+
+        .sidebar-menu>ul>li>a:hover {
+            background-color: #1c3264 !important;
+            color: #ffffff;
+        }
+
+        .user-header {
+            background-color: #fff !important;
+            display: flex;
+            padding: 10px 15px;
+            color: black;
+        }
+
+        .page-wrapper {
+            margin-left: 240px;
+            padding-top: 0px;
+            position: relative;
+            -webkit-transition: all 0.4s ease;
+            -ms-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+        }
+
+        .card1 {
+            border: 1px solid #fff;
+            margin-bottom: 30px;
+        }
+
+        .card1 .card-header1 {
+            background-color: #ffffff;
+            border-bottom: 1px solid #fff;
+        }
+
+        .btn-link {
+            font-weight: 400;
+            color: #000;
+            text-decoration: none !important;
+        }
+
+        a:hover {
+            color: #0056b3;
+            text-decoration: none !important;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            width: 100% !important;
+            word-wrap: break-word !important;
+            white-space: normal;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+
+        <div class="header">
+
+            <div class="header-left"></div>
+            <a href="javascript:void(0);" id="toggle_btn">
+                <i class="fe fe-text-align-left"></i>
+            </a>
+
+            <!-- Mobile Menu Toggle -->
+            <a class="mobile_btn" id="mobile_btn">
+                <i class="fa fa-bars"></i>
+            </a>
+            <!-- /Mobile Menu Toggle -->
+        </div>
+        <!-- /Header -->
+
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+
+            <div class="sidebar-inner ">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="menu-title">
+                            <!-- Logo -->
+                            <div class="m-auto">
+                                <a href="customer-dashboard.html" class="logo">
+                                    <img src="../assets/img/logo.jpeg" alt="Logo">
+                                </a>
+                            </div>
+                            <!-- /Logo -->
+
+                        </li>
+                        <hr>
+                        <li class="menu-title">
+                            <div class="user-header">
+                                <div class="avatar avatar-sm">
+                                    <i class="fe fe-user" style="font-size: 35px"></i>
+                                    <!-- <img src="assets/img/profiles/avatar-01.jpg" alt="User Image" class="avatar-img rounded-circle"> -->
+                                </div>
+                                <div class="user-text">
+                                    <h6>Name</h6>
+                                    <p class="text-muted mb-0">name@gmail.com</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="active">
+                            <a href="customer-dashboard.html"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+                        </li>
+                        <li>
+                            <a href="profile-setting.html"><i class="fe fe-user-plus"></i> <span>Profile</span></a>
+                        </li>
+                        <li>
+                            <a href="appointment-list.html"><i class="fe fe-layout"></i> <span>My Case</span></a>
+                        </li>
+                        <li>
+                            <a href="associate-diseases.html"><i class="fe fe-layout"></i> <span>Associate</span></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fe fe-logout"></i> <span>Logout</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /Sidebar -->
+
+        <!-- Page Wrapper -->
+        <div class="page-wrapper">
+
+            <div class="content container-fluid">
+
+
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <!-- Recent Orders -->
+                        <div class="card card-table">
+                            <!-- <div class="card-header">
+                                <h4 class="card-title">Appointment List</h4>
+                            </div> -->
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table text-center table-center mb-0" id="originalTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Disease Name</th>
+                                                <th>Month</th>
+                                                <th>Year</th>
+                                                <th>Duration</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div id="accordion">
+                                                        <div class="card card1">
+                                                            <div class="card-header card-header1" id="headingOne">
+                                                                <h5 class="mb-0">
+                                                                    <button class="btn btn-link" data-toggle="collapse"
+                                                                        data-target="#collapseOne" aria-expanded="true"
+                                                                        aria-controls="collapseOne">
+                                                                        pqr
+                                                                    </button>
+                                                                </h5>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td> October </td>
+                                                <td>2023</td>
+                                                <td> 11month </td>
+                                                <td>idontknow</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td> Remark </td>
+                                                <td colspan="5">
+                                                    <div class="card">
+                                                        <div id="collapseOne" class="collapse"
+                                                            aria-labelledby="headingOne" data-parent="#accordion">
+                                                            <div class="card-body p-2">
+                                                                <p>
+                                                                    Anim pariatur cliche reprehenderit, enim eiusmod
+                                                                    high
+                                                                    life accusamus terry richardson ad squid. 3 wolf
+                                                                    moon
+                                                                    officia aute, non cupidatat skateboarddolor brunch.
+                                                                    Food
+                                                                    truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+                                                                    moon tempor, sunt aliqua put a bird on it squid
+                                                                    single-origin coffee nulla assumenda shoreditch et.
+                                                                    Nihil anim keffiyeh helvetica, craft beer labore wes
+                                                                    anderson cred nesciunt sapiente ea proident. Ad
+                                                                    vegan
+                                                                    excepteur butcher vice lomo. Leggings occaecat craft
+                                                                    beer farm-to-table, raw denim aesthetic synth
+                                                                    nesciunt
+                                                                    you probably haven't heard of them accusamus labore
+                                                                    sustainable VHS.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /Recent Orders -->
+
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-end">
+                            <button class="btn btn-primary" onclick="addTable()"><i class="fe fe-plus"></i></button>
+                        </div>
+                    </div>
+                    <div id="tableContainer" class="row mt-3">
+                        <div class="col-md-12"></div>
+                    </div>
+                </div>
+
+                <script>
+                    let tableCounter = 0;
+
+                    function addTable() {
+                        tableCounter++;
+
+                        // Clone the original table
+                        const originalTable = document.getElementById("originalTable");
+                        const clonedTable = originalTable.cloneNode(true);
+
+                        // Generate unique IDs for elements in the cloned table
+                        clonedTable.id = "table" + tableCounter;
+
+                        const accordion = clonedTable.querySelector("#accordion");
+                        accordion.id = "accordion" + tableCounter;
+
+                        const collapseOne = clonedTable.querySelector("#collapseOne");
+                        const headingOne = clonedTable.querySelector("#headingOne");
+
+                        const diseaseNameButton = headingOne.querySelector("button");
+                        diseaseNameButton.setAttribute("data-toggle", "collapse");
+                        diseaseNameButton.setAttribute("data-target", "#collapseOne" + tableCounter);
+                        headingOne.id = "headingOne" + tableCounter;
+                        collapseOne.id = "collapseOne" + tableCounter;
+
+                        // Add the "minus" button
+                        const minusButton = document.createElement("button");
+                        minusButton.innerText = "Remove";
+                        minusButton.className = "btn btn-danger";
+                        minusButton.addEventListener("click", function () {
+                            removeTable(clonedTable);
+                        });
+
+                        const buttonContainer = document.createElement("div");
+                        buttonContainer.className = "mt-2";
+                        buttonContainer.appendChild(minusButton);
+
+                        clonedTable.appendChild(buttonContainer);
+
+                        // Add the cloned table to the tableContainer
+                        const tableContainer = document.getElementById("tableContainer");
+                        tableContainer.appendChild(clonedTable);
+
+                        // Show the cloned table
+                        clonedTable.classList.remove("d-none");
+                    }
+
+                    function removeTable(table) {
+                        table.remove();
+                    }
+                </script>
+
+
+                <div class="d-none">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table text-center table-bordered table-center mb-0" id="originalTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Disease Name</th>
+                                            <th>Month</th>
+                                            <th>Year</th>
+                                            <th>Duration</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div id="accordion">
+                                                    <div class="card card1">
+                                                        <div class="card-header card-header1" id="headingOne">
+                                                            <h5 class="mb-0">
+                                                                <button class="btn btn-link" data-toggle="collapse"
+                                                                    data-target="#collapseOne" aria-expanded="true"
+                                                                    aria-controls="collapseOne">
+                                                                    pqr
+                                                                </button>
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td> October </td>
+                                            <td>2023</td>
+                                            <td> 11 months </td>
+                                            <td>idontknow</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h4 class="card-title ms-3 mt-3">Remark</h4>
+                                </div>
+                                <div class="col-md-9 mt-3 p-1">
+                                    <div class="card">
+                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                            data-parent="#accordion">
+                                            <div class="card-body p-2">
+                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
+                                                terry richardson ad squid. 3 wolf moon officia aute, non cupidatat
+                                                skateboarddolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
+                                                single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+                                                helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                                                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
+                                                beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+                                                haven't heard of them accusamus labore sustainable VHS.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- /Page Wrapper -->
+
+    </div>
+    <!-- /Main Wrapper -->
+
+    <!-- jQuery -->
+    <script src="../assets/js/jquery-3.6.4.min.js"></script>
+
+    <!-- Bootstrap Core JS -->
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Slimscroll JS -->
+    <script src="../assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <script src="../assets/plugins/raphael/raphael.min.js"></script>
+    <script src="../assets/plugins/morris/morris.min.js"></script>
+    <script src="../assets/js/chart.morris.js"></script>
+
+    <!-- Custom JS -->
+    <script src="../assets/js/script.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
